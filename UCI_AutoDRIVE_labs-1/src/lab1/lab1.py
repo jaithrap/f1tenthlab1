@@ -111,5 +111,10 @@ def bridge(sid, data):
 ################################################################################
 
 if __name__ == "__main__":
-    app = socketio.Middleware(sio, app)
-    eventlet.wsgi.server(eventlet.listen(("", 4567)), app)
+    app = socketio.Middleware(
+        sio, app
+    )  # Wrap flask application with socketio's middleware
+    eventlet.wsgi.server(
+        eventlet.listen(("", 4567)), app
+    )  # Deploy as an eventlet WSGI server
+
